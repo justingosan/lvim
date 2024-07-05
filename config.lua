@@ -5,13 +5,13 @@
 
 lvim.plugins = {
   -- neo-scroll
-  {
-    "karb94/neoscroll.nvim",
-    event = "WinScrolled",
-    config = function()
-      require("neoscroll").setup()
-    end,
-  },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   event = "WinScrolled",
+  --   config = function()
+  --     require("neoscroll").setup()
+  --   end,
+  -- },
   {
     "nacro90/numb.nvim",
     event = "BufRead",
@@ -120,6 +120,8 @@ lvim.builtin.which_key.mappings["S"] = {
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
 
+lvim.builtin.which_key.setup.plugins.presets.z = true
+lvim.builtin.telescope.defaults.file_ignore_patterns = { "node_modules" }
 lvim.builtin.treesitter.rainbow.enable = true
 -- format on save
 lvim.format_on_save = true
@@ -127,3 +129,14 @@ lvim.reload_config_on_save = true
 
 vim.opt.wrap = true
 vim.opt.relativenumber = true
+
+-- map ctrl left and right to change buffer
+lvim.keys.normal_mode["<c-Left>"] = ":bprev<CR>"
+lvim.keys.normal_mode["<c-Right>"] = ":bnext<CR>"
+
+-- map redo to U
+lvim.keys.normal_mode["U"] = "<C-r>"
+
+-- map brackets to ctrl+d and ctrl+u
+lvim.keys.normal_mode["["] = "<C-u>"
+lvim.keys.normal_mode["]"] = "<C-d>"
